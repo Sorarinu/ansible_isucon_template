@@ -1,0 +1,38 @@
+---
+
+- name: install git (CentOS)
+  yum:
+    name: git
+    state: present
+  when:
+    - ansible_distribution == "CentOS"
+
+- name: install git (Ubuntu)
+  apt:
+    name: git
+    state: present
+  when:
+    - ansible_distribution == "Ubuntu"
+
+- name: git clone isucon repogitory
+  git:
+    repo: '{{ isucon_git_repo }}'
+    dest: '{{ isucon_app_dir }}'
+
+- name: backup app code
+  command: 'cp -rp ./* {{ isucon_app_dir }}/'
+  args:
+    chdir: '{{ isucon_default_app_dir }}'
+
+- name: backup /etc
+  command: 'cp -rp ./* {{ isucon_app_dir }}/'
+  args:
+    chdir: '/etc'
+
+- name: 'chown {{isucon_default_user}}:{{isucon_default_user}} {{ isucon_app_dir }}/etc'
+  file:
+    path: '{{ isucon_app_dir }}/etc'
+    state: directory
+    recurse: yes
+    owner: '{{ isucon_default_user }}'
+    group: '{{ isucon_default_user }}'
