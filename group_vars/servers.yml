@@ -5,5 +5,5 @@ isucon_default_user: 'isucon'
 isucon_default_app_dir: '/home/{{ isucon_user }}/app'
 
 # こっちで決める
-isucon_app_dir: '/home/{{ isucon_default_user }}/20200912-isucon10-qualify'
-isucon_git_repo: 'https://github.com/zoetics/20200912-isucon10-qualify.git'
+isucon_app_dir: '/home/{{ isucon_default_user }}/xxxx'
+isucon_git_repo: 'https://github.com/xxxx/isucon-backup.git'
