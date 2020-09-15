@@ -25,9 +25,9 @@
     chdir: '{{ isucon_default_app_dir }}'
 
 - name: backup /etc
-  command: 'cp -rp ./* {{ isucon_app_dir }}/'
+  command: 'cp -rp ./etc {{ isucon_app_dir }}/'
   args:
-    chdir: '/etc'
+    chdir: '/'
 
 - name: 'chown {{isucon_default_user}}:{{isucon_default_user}} {{ isucon_app_dir }}/etc'
   file:
