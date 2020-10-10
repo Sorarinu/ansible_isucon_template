@@ -18,6 +18,7 @@
   git:
     repo: '{{ isucon_git_repo }}'
     dest: '{{ isucon_app_dir }}'
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: backup app code
   command: 'cp -rp ./* {{ isucon_app_dir }}/'

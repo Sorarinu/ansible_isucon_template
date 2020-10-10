@@ -1,0 +1,12 @@
+---
+
+- name: Install Netdata
+  shell: "bash <(curl -Ss https://my-netdata.io/kickstart.sh) all --dont-wait"
+  ignore_errors: "{{ ansible_check_mode }}"
+
+- name: Run netdata
+  service:
+    name: netdata
+    state: started
+    enabled: no
+  ignore_errors: "{{ ansible_check_mode }}"
